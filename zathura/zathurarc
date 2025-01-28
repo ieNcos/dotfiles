@@ -1,5 +1,9 @@
 set selection-clipboard clipboard
 set scroll-wheel-enabled true
+map ; scroll right
+map j scroll left
+map k scroll down
+map l scroll up
 #set synctex true
 #set synctex-editor-command "nvim --remote-silent +%{line} %{input}"
 #set synctex-editor-command "nvim --remote-silent +%{line} %{input}"
