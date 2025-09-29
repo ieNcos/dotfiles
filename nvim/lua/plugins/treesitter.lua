@@ -3,17 +3,23 @@ return {
     run = ":TSUpdate",
     config = function ()
         ---@diagnostic disable-next-line: missing-fields
+        -- local parser_install_dir = vim.fn.stdpath("cache") .. "/treesitters"
+        -- vim.fn.mkdir(parser_install_dir, "p")
         require('nvim-treesitter.configs').setup {
+            parser_install_dir = parser_install_dir,
             auto_install = false,
             ensure_installed = {
-                'python',
+                'bash',
+                'c',
+                'cpp',
+                'fish',
+                'haskell',
                 'markdown',
                 'lua',
-                'vim',
-                'fish',
-                'bash',
-                'scheme',
+                'python',
                 'rust',
+                'scheme',
+                'vim',
             },
             highlight = {
                 enable = true,

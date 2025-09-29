@@ -2,15 +2,6 @@ return {
     {
         "neovim/nvim-lspconfig",
         dependencies = {
-            { "williamboman/mason.nvim" },
-            { "williamboman/mason-lspconfig.nvim" },
-            { 'WhoIsSethDaniel/mason-tool-installer.nvim' },
-            { -- nice loading notifications
-                -- PERF: but can slow down startup
-                'j-hui/fidget.nvim',
-                enabled = false,
-                opts = {},
-            },
             {
                 {
                     "folke/lazydev.nvim",
@@ -40,27 +31,6 @@ return {
         config = function ()
             local lspconfig = require 'lspconfig'
             local util = require 'lspconfig.util'
-
-            require('mason').setup({
-                ui = {
-                    icons = {
-                        package_installed = "✓",
-                        package_pending = "➜",
-                        package_uninstalled = "✗",
-                    },
-                },
-            })
-            require('mason-lspconfig').setup {
-                automatic_installation = false,
-                ensure_installed = {
-                    -- "lua_ls",
-                    -- "rust_analyzer",
-                },
-            }
-
-            require('mason-tool-installer').setup {
-                'tree-sitter-cli',
-            }
 
             lspconfig.tinymist.setup {
                 -- offset_encoding = "utf-8",

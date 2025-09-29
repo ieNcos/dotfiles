@@ -1,4 +1,4 @@
-#! /usr/bin/fish
+#! /usr/bin/env fish
 
 set workspace $(hyprctl activeworkspace | awk 'NR == 1 {print$4}')
 set groupname $(string sub -l 1 -s 2 $workspace)

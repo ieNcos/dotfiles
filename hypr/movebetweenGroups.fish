@@ -1,4 +1,4 @@
-#! /usr/bin/fish
+#! /usr/bin/env fish
 set target $argv
 set state_variable HYPRWORKSPACE$target
 set state $$state_variable

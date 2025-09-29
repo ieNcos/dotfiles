@@ -78,6 +78,7 @@ trigEngine = "plain"},fmta([[
 \begin{figure}[H]
 \center
 <>
+\caption{}
 \end{figure}
 ]], {
     i(0)
@@ -89,12 +90,10 @@ snippetType = "snippet",
 wordTrig = true,
 trigEngine = "plain"},fmta([[
 \includegraphics[height=<>cm]{"<>"}
-\caption{<>}
 \label{fig:<>} 
 ]], {
     i(1),
     i(2),
-    i(3),
     i(0)
 }), {}),
 

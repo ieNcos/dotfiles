@@ -7,4 +7,4 @@ if test -z "$DISPLAY"
     Hyprland
 end
 
-thefuck --alias | source
+direnv hook fish | source

@@ -16,6 +16,7 @@ scrolloff      = 5
 mouse_events   = [ "click", "scroll" ]
 title_format   = "Yazi: {cwd}"
 
+
 [preview]
 wrap            = "no"
 tab_size        = 2
@@ -38,6 +39,9 @@ edit = [
 ]
 pdf = [
     { run = 'zathura "$@" --fork', block = false, for = "unix" },
+]
+jpg = [
+    { run = 'gthumb "$@"' }
 ]
 open = [
 	{ run = 'xdg-open "$1"',                desc = "Open", for = "linux" },
@@ -67,7 +71,7 @@ rules = [
 	# Text
 	{ mime = "text/*", use = [ "edit", "reveal" ] },
 	# Image
-	{ mime = "image/*", use = [ "open", "reveal" ] },
+	{ mime = "image/*", use = [ "jpg", "open", "reveal" ] },
 	# Media
 	{ mime = "{audio,video}/*", use = [ "play", "reveal" ] },
 	# Archive
@@ -80,6 +84,8 @@ rules = [
     # pdf
     { mime = "application/pdf", use = [ "pdf", "reveal" ] },
 	# Fallback
+    { name = "*.tex", use = [ "edit", "reveal" ] },
+    { name = "*.md", use = [ "edit", "reveal" ] },
 	{ name = "*", use = [ "open", "reveal" ] },
 ]
 

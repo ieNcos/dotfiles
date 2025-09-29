@@ -39,7 +39,7 @@ local get_visual = function(args, parent)
 end
 return {
 
-s({trig = "mm", wordTrig = true, trigEngine = "pattern", snippetType = "autosnippet"},
+s({trig = ",,", wordTrig = true, trigEngine = "pattern", snippetType = "autosnippet"},
   fmta(
     "$<>$",
     {

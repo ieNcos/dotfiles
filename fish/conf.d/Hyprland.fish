@@ -11,5 +11,5 @@ function Hyprland
     set -U HYPRWORKSPACE9 a
     set -U HYPRWORKSPACE0 a
 end
-    /usr/bin/Hyprland
+    /usr/bin/env Hyprland
 end

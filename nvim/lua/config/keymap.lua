@@ -1,6 +1,8 @@
 --keymaps
 local wk = require 'which-key'
 
+        -- vim.keymap.set("n", "<leader>ll", "<plug>(vimtex-compile-toggle)", {remap = true})
+
 local in_mathzone = function()
     local result = vim.treesitter.get_captures_at_cursor(0)
     local flag = false
@@ -130,6 +132,8 @@ vmap("<leader>f|", ":!column -t -s '|' -o '|'<cr>")
 vmap("Y", "\"+y")
 
 imap("jk", "<right>")
+imap("<C-a>", "<esc>I")
+imap("<C-e>", "<esc>A")
 -- imap("<esc>", function ()
 --     -- local current_buffer = vim.api.nvim_get_current_buf()
 --     local current_column = vim.api.nvim_win_get_cursor(0)[2]
@@ -185,7 +189,6 @@ local nmappings = {
     { from = "gl",         to = "gk",                     mode = mode_nv },
     { from = "<Up>",       to = "<c-o>gk",                mode = mode_i },
     { from = "<Down>",     to = "<c-o>gj",                mode = mode_i },
-    { from = "<c-a>",      to = "<ESC>A",                 mode = mode_i },
     { from = "cc",      to = "$zfa{" },
     --
     --	-- Window & splits

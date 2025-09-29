@@ -1,3 +1,3 @@
-function zathura
-    /usr/bin/zathura --fork $argv &> /dev/null
+function za
+    /usr/bin/env zathura --fork $argv &> /dev/null
 end

@@ -5,11 +5,11 @@ return {
     -- },
 
     {
-        'alahaia/fcitx.nvim',
+        'alohaia/fcitx.nvim',
         config = function()
-            -- require 'fcitx' {
+            require 'fcitx' {
                 -- options
-            -- }
+            }
         end
     }
 }

@@ -16,8 +16,6 @@ local compileRun = function()
 	local ft = vim.bo.filetype
 	if ft == "dart" then
 		vim.cmd(":FlutterRun -d " .. vim.g.flutter_default_device .. " " .. vim.g.flutter_run_args)
-	elseif ft == "markdown" then
-		vim.cmd(":InstantMarkdownPreview")
 	elseif ft == 'cpp' then
 		split()
 		vim.cmd("term g++ % -o %< && ./%<")
@@ -51,6 +49,8 @@ local compileRun = function()
 	elseif ft == 'clojure' then
 		split()
 		vim.cmd([[exec "term clojure -M %"]])
+	elseif ft == 'markdown' then
+		vim.cmd([[exec "! md2pdf --css ~/Templates/md2pdf.css % %<.pdf"]])
 	end
 end
 

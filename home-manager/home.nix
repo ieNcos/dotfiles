@@ -35,7 +35,12 @@
     #   echo "Hello, ${config.home.username}!"
     # '')
 
+    pkgs.obs-studio
     pkgs.ffmpeg
+    pkgs.ollama
+    pkgs.zathura
+    pkgs.texlive.combined.scheme-full
+    pkgs.wpsoffice-cn
   ];
 
   programs.neovim = {
@@ -48,6 +53,8 @@
       clang-tools
       rust-analyzer
       haskell-language-server
+      nodejs
+      python3Packages.python-lsp-server
     ];
     # plugins = [
     #   pkgs.vimPlugins.nvim-treesitter
@@ -69,18 +76,22 @@
     #   org.gradle.daemon.idletimeout=3600000
     # '';
     "Documents/dotfiles".source = config.lib.file.mkOutOfStoreSymlink ~/.backpack/dotfiles;
-    "Documents/books".source = config.lib.file.mkOutOfStoreSymlink ~/.backpack/books;
+    "Documents/books".source    = config.lib.file.mkOutOfStoreSymlink ~/.backpack/books;
 
-    ".config/emacs".source = config.lib.file.mkOutOfStoreSymlink ~/.backpack/dotfiles/emacs;
-    ".config/fish".source = config.lib.file.mkOutOfStoreSymlink ~/.backpack/dotfiles/fish;
-    ".config/hypr".source = config.lib.file.mkOutOfStoreSymlink ~/.backpack/dotfiles/hypr;
-    ".config/kitty".source = config.lib.file.mkOutOfStoreSymlink ~/.backpack/dotfiles/kitty;
-    ".config/nvim".source = config.lib.file.mkOutOfStoreSymlink ~/.backpack/dotfiles/nvim;
-    ".config/tmux".source = config.lib.file.mkOutOfStoreSymlink ~/.backpack/dotfiles/tmux;
-    ".config/waybar".source = config.lib.file.mkOutOfStoreSymlink ~/.backpack/dotfiles/waybar;
-    ".config/yazi".source = config.lib.file.mkOutOfStoreSymlink ~/.backpack/dotfiles/yazi;
-    ".config/zathura".source = config.lib.file.mkOutOfStoreSymlink ~/.backpack/dotfiles/zathura;
+    ".config/emacs".source      = config.lib.file.mkOutOfStoreSymlink ~/.backpack/dotfiles/emacs;
+    ".config/fcitx5".source     = config.lib.file.mkOutOfStoreSymlink ~/.backpack/dotfiles/fcitx5;
+    ".config/fish".source       = config.lib.file.mkOutOfStoreSymlink ~/.backpack/dotfiles/fish;
+    ".config/hypr".source       = config.lib.file.mkOutOfStoreSymlink ~/.backpack/dotfiles/hypr;
+    ".config/kitty".source      = config.lib.file.mkOutOfStoreSymlink ~/.backpack/dotfiles/kitty;
+    ".config/nixpkgs".source    = config.lib.file.mkOutOfStoreSymlink ~/.backpack/dotfiles/nixpkgs;
+    ".config/nvim".source       = config.lib.file.mkOutOfStoreSymlink ~/.backpack/dotfiles/nvim;
+    ".config/tmux".source       = config.lib.file.mkOutOfStoreSymlink ~/.backpack/dotfiles/tmux;
+    ".config/waybar".source     = config.lib.file.mkOutOfStoreSymlink ~/.backpack/dotfiles/waybar;
+    ".config/yazi".source       = config.lib.file.mkOutOfStoreSymlink ~/.backpack/dotfiles/yazi;
+    ".config/zathura".source    = config.lib.file.mkOutOfStoreSymlink ~/.backpack/dotfiles/zathura;
+
   };
+
 
   # Home Manager can also manage your environment variables through
   # 'home.sessionVariables'. These will be explicitly sourced when using a

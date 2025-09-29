@@ -18,7 +18,9 @@ set -x HYPRSHOT_DIR ~/Pictures/screenshots
 set -x RUSTUP_DIST_SERVER "https://mirrors.ustc.edu.cn/rust-static"
 set -x RUSTUP_UPDATE_ROOT "https://mirrors.ustc.edu.cn/rust-static/rustup"
 
-set -x GTX_IM_MODULE fcitx
-set -x QT_IM_MODULE fcitx
-set -x XMODIFIERS @im fcitx
-set -x SDL_IM_MODULE fcitx
+set -x GTX_IM_MODULE fcitx5
+set -x QT_IM_MODULE fcitx5
+set -x XMODIFIERS @im fcitx5
+set -x SDL_IM_MODULE fcitx5
+
+set -x EDITOR nvim
