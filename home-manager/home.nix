@@ -71,20 +71,20 @@
     #   org.gradle.console=verbose
     #   org.gradle.daemon.idletimeout=3600000
     # '';
-    "Documents/dotfiles".source = config.lib.file.mkOutOfStoreSymlink ~/.backpack/dotfiles;
-    "Documents/books".source    = config.lib.file.mkOutOfStoreSymlink ~/.backpack/books;
+    "Documents/dotfiles".source = config.lib.file.mkOutOfStoreSymlink .backpack/dotfiles;
+    "Documents/books".source    = config.lib.file.mkOutOfStoreSymlink .backpack/books;
 
-    ".config/emacs".source      = config.lib.file.mkOutOfStoreSymlink ~/.backpack/dotfiles/emacs;
-    ".config/fcitx5".source     = config.lib.file.mkOutOfStoreSymlink ~/.backpack/dotfiles/fcitx5;
-    ".config/fish".source       = config.lib.file.mkOutOfStoreSymlink ~/.backpack/dotfiles/fish;
-    ".config/hypr".source       = config.lib.file.mkOutOfStoreSymlink ~/.backpack/dotfiles/hypr;
-    ".config/kitty".source      = config.lib.file.mkOutOfStoreSymlink ~/.backpack/dotfiles/kitty;
-    ".config/nixpkgs".source    = config.lib.file.mkOutOfStoreSymlink ~/.backpack/dotfiles/nixpkgs;
-    ".config/nvim".source       = config.lib.file.mkOutOfStoreSymlink ~/.backpack/dotfiles/nvim;
-    ".config/tmux".source       = config.lib.file.mkOutOfStoreSymlink ~/.backpack/dotfiles/tmux;
-    ".config/waybar".source     = config.lib.file.mkOutOfStoreSymlink ~/.backpack/dotfiles/waybar;
-    ".config/yazi".source       = config.lib.file.mkOutOfStoreSymlink ~/.backpack/dotfiles/yazi;
-    ".config/zathura".source    = config.lib.file.mkOutOfStoreSymlink ~/.backpack/dotfiles/zathura;
+    ".config/emacs".source      = config.lib.file.mkOutOfStoreSymlink .backpack/dotfiles/emacs;
+    ".config/fcitx5".source     = config.lib.file.mkOutOfStoreSymlink .backpack/dotfiles/fcitx5;
+    ".config/fish".source       = config.lib.file.mkOutOfStoreSymlink .backpack/dotfiles/fish;
+    ".config/hypr".source       = config.lib.file.mkOutOfStoreSymlink .backpack/dotfiles/hypr;
+    ".config/kitty".source      = config.lib.file.mkOutOfStoreSymlink .backpack/dotfiles/kitty;
+    ".config/nixpkgs".source    = config.lib.file.mkOutOfStoreSymlink .backpack/dotfiles/nixpkgs;
+    ".config/nvim".source       = config.lib.file.mkOutOfStoreSymlink .backpack/dotfiles/nvim;
+    ".config/tmux".source       = config.lib.file.mkOutOfStoreSymlink .backpack/dotfiles/tmux;
+    ".config/waybar".source     = config.lib.file.mkOutOfStoreSymlink .backpack/dotfiles/waybar;
+    ".config/yazi".source       = config.lib.file.mkOutOfStoreSymlink .backpack/dotfiles/yazi;
+    ".config/zathura".source    = config.lib.file.mkOutOfStoreSymlink .backpack/dotfiles/zathura;
 
   };
 
