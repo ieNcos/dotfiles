@@ -35,8 +35,8 @@ local compileRun = function()
 	elseif ft == 'python' then
         local TMP_FOR_VIM = get_conda_env()
 		split()
---set TMP_FOR_VIM $(conda info --envs | grep '\*' | cut -d ' ' -f 1); 
-		vim.cmd([[ term conda activate ]]..TMP_FOR_VIM..[[; /usr/bin/env python % ]])
+		-- vim.cmd([[ term conda activate ]]..TMP_FOR_VIM..[[; /usr/bin/env python % ]])
+		vim.cmd([[term python %]])
 	elseif ft == 'javascript' then
 		split()
 		vim.cmd("term node %")
