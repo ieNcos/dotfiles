@@ -20,6 +20,7 @@ return {
                 'rust',
                 'scheme',
                 'vim',
+                'norg',
             },
             highlight = {
                 enable = true,

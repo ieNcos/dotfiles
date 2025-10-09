@@ -2,5 +2,34 @@ return {
     "nvim-neorg/neorg",
     lazy = false, -- Disable lazy loading as some `lazy.nvim` distributions set `lazy = true` by default
     version = "*", -- Pin Neorg to the latest stable release
-    config = true,
+    config = function ()
+        require('neorg').setup {
+            load = {
+                ["core.defaults"] = {},
+                -- ["core.concealer"] = {},
+                -- ["core.dirman"] = {
+                  -- config = {
+                    -- workspaces = {
+                      -- notes = "~/notes",
+                    -- },
+                    -- default_workspaces = "notes",
+                  -- },
+                -- },
+                ["core.export.markdown"] = {
+                  config = {
+                    extensions = { "mathematics" },
+                  },
+                },
+                -- ["core.export.html"] = {},
+                ["core.export"] = {},
+                -- ["core.integrations.treesitter"] = {},
+                -- ["core.latex.renderer"] = {
+                --   config = {
+                --     conceal = true,
+                --     render_on_enter = true,
+                --   },
+                -- },
+            }
+        }
+    end
 }

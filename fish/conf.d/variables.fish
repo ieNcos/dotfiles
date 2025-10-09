@@ -20,7 +20,7 @@ set -x RUSTUP_UPDATE_ROOT "https://mirrors.ustc.edu.cn/rust-static/rustup"
 
 set -x GTX_IM_MODULE fcitx5
 set -x QT_IM_MODULE fcitx5
-set -x XMODIFIERS @im fcitx5
+set -x XMODIFIERS @im=fcitx5
 set -x SDL_IM_MODULE fcitx5
 
 set -x EDITOR nvim

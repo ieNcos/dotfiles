@@ -41,7 +41,7 @@ vim.cmd([[
 au InsertLeave *.tex write
 ]])
 vim.cmd([[
-set termencoding=utf-8
+"" set termencoding=utf-8
 set fileencodings=utf8,ucs-bom,gbk,cp936,gb2312,gb18030
 ]])
 vim.cmd([[
