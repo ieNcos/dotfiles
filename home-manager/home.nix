@@ -17,6 +17,14 @@
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
+  nixpkgs.overlays = [
+    (import (builtins.fetchTarball {
+        url = "https://github.com/nix-community/emacs-overlay/archive/master.tar.gz";
+        sha256 = "0fxji4d1xdiq5vb0r3sbcbqmhcnw5yqgchmfql0a5wxgbh06fan4";
+    }))
+  ];
+
+
   home.packages = with pkgs; [
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
@@ -34,13 +42,15 @@
     # (pkgs.writeShellScriptBin "my-hello" ''
     #   echo "Hello, ${config.home.username}!"
     # '')
-
+    emacs-pgtk
     obs-studio
     ffmpeg
     ollama
     zathura
     texlive.combined.scheme-full
     wpsoffice-cn
+    ripgrep
+    fd
   ];
 
   programs.neovim = {
@@ -58,6 +68,19 @@
     ];
   };
 
+    programs.zsh = {
+      enable = true;
+      enableCompletions = true;
+      autosuggestions.enable = true;
+      syntaxHighlighting.enable = true;
+
+      # shellAliases = {
+      # };
+
+      history.size = 10000;
+  };
+
+
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
   home.file = {
@@ -71,20 +94,20 @@
     #   org.gradle.console=verbose
     #   org.gradle.daemon.idletimeout=3600000
     # '';
-    "Documents/dotfiles".source = config.lib.file.mkOutOfStoreSymlink .backpack/dotfiles;
-    "Documents/books".source    = config.lib.file.mkOutOfStoreSymlink .backpack/books;
+    "Documents/dotfiles".source = config.lib.file.mkOutOfStoreSymlink /home/ieNcos/.backpack/dotfiles;
+    "Documents/books".source    = config.lib.file.mkOutOfStoreSymlink /home/ieNcos/.backpack/books;
 
-    ".config/emacs".source      = config.lib.file.mkOutOfStoreSymlink .backpack/dotfiles/emacs;
-    ".config/fcitx5".source     = config.lib.file.mkOutOfStoreSymlink .backpack/dotfiles/fcitx5;
-    ".config/fish".source       = config.lib.file.mkOutOfStoreSymlink .backpack/dotfiles/fish;
-    ".config/hypr".source       = config.lib.file.mkOutOfStoreSymlink .backpack/dotfiles/hypr;
-    ".config/kitty".source      = config.lib.file.mkOutOfStoreSymlink .backpack/dotfiles/kitty;
-    ".config/nixpkgs".source    = config.lib.file.mkOutOfStoreSymlink .backpack/dotfiles/nixpkgs;
-    ".config/nvim".source       = config.lib.file.mkOutOfStoreSymlink .backpack/dotfiles/nvim;
-    ".config/tmux".source       = config.lib.file.mkOutOfStoreSymlink .backpack/dotfiles/tmux;
-    ".config/waybar".source     = config.lib.file.mkOutOfStoreSymlink .backpack/dotfiles/waybar;
-    ".config/yazi".source       = config.lib.file.mkOutOfStoreSymlink .backpack/dotfiles/yazi;
-    ".config/zathura".source    = config.lib.file.mkOutOfStoreSymlink .backpack/dotfiles/zathura;
+    # ".config/emacs".source      = config.lib.file.mkOutOfStoreSymlink /home/ieNcos/.backpack/dotfiles/emacs;
+    ".config/fcitx5".source     = config.lib.file.mkOutOfStoreSymlink /home/ieNcos/.backpack/dotfiles/fcitx5;
+    ".config/fish".source       = config.lib.file.mkOutOfStoreSymlink /home/ieNcos/.backpack/dotfiles/fish;
+    ".config/hypr".source       = config.lib.file.mkOutOfStoreSymlink /home/ieNcos/.backpack/dotfiles/hypr;
+    ".config/kitty".source      = config.lib.file.mkOutOfStoreSymlink /home/ieNcos/.backpack/dotfiles/kitty;
+    ".config/nixpkgs".source    = config.lib.file.mkOutOfStoreSymlink /home/ieNcos/.backpack/dotfiles/nixpkgs;
+    ".config/nvim".source       = config.lib.file.mkOutOfStoreSymlink /home/ieNcos/.backpack/dotfiles/nvim;
+    ".config/tmux".source       = config.lib.file.mkOutOfStoreSymlink /home/ieNcos/.backpack/dotfiles/tmux;
+    ".config/waybar".source     = config.lib.file.mkOutOfStoreSymlink /home/ieNcos/.backpack/dotfiles/waybar;
+    ".config/yazi".source       = config.lib.file.mkOutOfStoreSymlink /home/ieNcos/.backpack/dotfiles/yazi;
+    ".config/zathura".source    = config.lib.file.mkOutOfStoreSymlink /home/ieNcos/.backpack/dotfiles/zathura;
 
   };
 
