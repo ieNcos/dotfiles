@@ -24,10 +24,10 @@ vim.api.nvim_create_autocmd( 'FileType', { pattern = {"tex", "latex"},
     end
 }) --没有用，对数学环境里的东西没有用，对数学环境外的才有效。
 
-vim.api.nvim_create_autocmd( 'FileType', { pattern = {"python"},
-    callback = function ()
-        vim.cmd([[
-        set noexpandtab
-        ]])
-    end
-})
+-- vim.api.nvim_create_autocmd( 'FileType', { pattern = {"python"},
+--     callback = function ()
+--         vim.cmd([[
+--         set noexpandtab
+--         ]])
+--     end
+-- })

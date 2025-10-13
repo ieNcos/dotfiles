@@ -38,7 +38,8 @@ return {
             lspconfig.clangd.setup {
                 cmd = { "clangd", "--header-insertion=never" }
             }
-            lspconfig.pylsp.setup {}
+            -- lspconfig.pylsp.setup {}
+            lspconfig.pyright.setup {}
             lspconfig.hls.setup {}
             lspconfig.clojure_lsp.setup {}
             lspconfig.rust_analyzer.setup({

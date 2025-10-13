@@ -17,12 +17,15 @@
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
-  nixpkgs.overlays = [
-    (import (builtins.fetchTarball {
-        url = "https://github.com/nix-community/emacs-overlay/archive/master.tar.gz";
-        sha256 = "0fxji4d1xdiq5vb0r3sbcbqmhcnw5yqgchmfql0a5wxgbh06fan4";
-    }))
-  ];
+
+
+
+  # nixpkgs.overlays = [
+  #   (import (builtins.fetchTarball {
+  #       url = "https://github.com/nix-community/emacs-overlay/archive/master.tar.gz";
+  #       sha256 = "0fxji4d1xdiq5vb0r3sbcbqmhcnw5yqgchmfql0a5wxgbh06fan4";
+  #   }))
+  # ];
 
 
   home.packages = with pkgs; [
@@ -65,20 +68,15 @@
       haskell-language-server
       nodejs
       python3Packages.python-lsp-server
+      pyright
     ];
   };
 
-    programs.zsh = {
-      enable = true;
-      enableCompletions = true;
-      autosuggestions.enable = true;
-      syntaxHighlighting.enable = true;
+  # services.syncthing = {
+  #   enable = true;
+  #   openDefaultPorts = true; # Open ports in the firewall for Syncthing
+  # };
 
-      # shellAliases = {
-      # };
-
-      history.size = 10000;
-  };
 
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
