@@ -54,6 +54,17 @@
     wpsoffice-cn
     ripgrep
     fd
+    pdftk
+    wine
+    typst
+    tinymist
+    websocat
+    darktable
+    # art
+    # art用home-manager安装有问题，暂时用系统安装
+    rawtherapee
+
+    exiftool
   ];
 
   programs.neovim = {
@@ -69,6 +80,7 @@
       nodejs
       python3Packages.python-lsp-server
       pyright
+      tinymist
     ];
   };
 

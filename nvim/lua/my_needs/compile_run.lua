@@ -51,6 +51,8 @@ local compileRun = function()
 		vim.cmd([[exec "term clojure -M %"]])
 	elseif ft == 'markdown' then
 		vim.cmd([[exec "! md2pdf --css ~/Templates/md2pdf.css % %<.pdf"]])
+	elseif ft == 'typst' then
+		vim.cmd([[exec "! typst compile %"]])
 	end
 end
 

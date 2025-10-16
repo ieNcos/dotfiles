@@ -70,3 +70,21 @@ vim.opt.statusline = '%{%g:currentmode[mode()]%} %{%reg_recording()%} %* %t | %y
 --}}}
 
 vim.opt.cmdheight = 1
+
+
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.foldingRange = {
+  dynamicRegistration = true,
+  lineFoldingOnly = true,
+}
+
+capabilities.textDocument.semanticTokens.multilineTokenSupport = true
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+vim.lsp.enable('tinymist')
+vim.lsp.config("tinymist", {
+    capabilities = capabilities,
+    settings = {
+        formatterMode = "typstyle"
+    }
+})
