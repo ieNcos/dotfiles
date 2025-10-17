@@ -114,6 +114,9 @@
     "Documents/dotfiles".source = config.lib.file.mkOutOfStoreSymlink /home/ieNcos/.backpack/dotfiles;
     "Documents/books".source    = config.lib.file.mkOutOfStoreSymlink /home/ieNcos/.backpack/books;
     "Desktop/coding".source    = config.lib.file.mkOutOfStoreSymlink /home/ieNcos/.backpack/coding;
+    "Templates".source    = config.lib.file.mkOutOfStoreSymlink /home/ieNcos/.backpack/Templates;
+    "00Core".source    = config.lib.file.mkOutOfStoreSymlink /home/ieNcos/.backpack/00Core;
+
 
     ".doom.d".source    = config.lib.file.mkOutOfStoreSymlink /home/ieNcos/.backpack/dotfiles/doomEmacs;
     ".config/fcitx5".source     = config.lib.file.mkOutOfStoreSymlink /home/ieNcos/.backpack/dotfiles/fcitx5;

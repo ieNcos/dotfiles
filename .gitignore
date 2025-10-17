@@ -2,3 +2,5 @@
 emacs/elpa
 emacs/eln-cache
 emacs/auto-save-list
+fish/fish_plugins
+fish/fish_variables
