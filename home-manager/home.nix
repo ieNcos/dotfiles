@@ -45,26 +45,33 @@
     # (pkgs.writeShellScriptBin "my-hello" ''
     #   echo "Hello, ${config.home.username}!"
     # '')
+    pdfpc
+    pdftk
+    exiftool
+
+    tor
+    tor-browser
+
+    steel
     emacs-pgtk
-    obs-studio
-    ffmpeg
     ollama
     zathura
     texlive.combined.scheme-full
     wpsoffice-cn
     ripgrep
     fd
-    pdftk
     wine
     typst
     tinymist
     websocat
+
+    obs-studio
+    ffmpeg
     darktable
     # art
     # art用home-manager安装有问题，暂时用系统安装
     rawtherapee
 
-    exiftool
   ];
 
   programs.neovim = {
@@ -106,8 +113,9 @@
     # '';
     "Documents/dotfiles".source = config.lib.file.mkOutOfStoreSymlink /home/ieNcos/.backpack/dotfiles;
     "Documents/books".source    = config.lib.file.mkOutOfStoreSymlink /home/ieNcos/.backpack/books;
+    "Desktop/coding".source    = config.lib.file.mkOutOfStoreSymlink /home/ieNcos/.backpack/coding;
 
-    # ".config/emacs".source      = config.lib.file.mkOutOfStoreSymlink /home/ieNcos/.backpack/dotfiles/emacs;
+    ".doom.d".source    = config.lib.file.mkOutOfStoreSymlink /home/ieNcos/.backpack/dotfiles/doomEmacs;
     ".config/fcitx5".source     = config.lib.file.mkOutOfStoreSymlink /home/ieNcos/.backpack/dotfiles/fcitx5;
     ".config/fish".source       = config.lib.file.mkOutOfStoreSymlink /home/ieNcos/.backpack/dotfiles/fish;
     ".config/hypr".source       = config.lib.file.mkOutOfStoreSymlink /home/ieNcos/.backpack/dotfiles/hypr;

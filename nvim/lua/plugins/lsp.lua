@@ -32,14 +32,38 @@ return {
             local lsp = vim.lsp
             local lspconfig = require 'lspconfig'
             local util = require 'lspconfig.util'
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.foldingRange = {
+  dynamicRegistration = true,
+  lineFoldingOnly = true,
+}
+
+capabilities.textDocument.semanticTokens.multilineTokenSupport = true
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+vim.lsp.enable('tinymist')
+vim.lsp.config("tinymist", {
+    capabilities = capabilities,
+    settings = {
+        formatterMode = "typstyle"
+    }
+})
 
             -- lspconfig.clangd.setup {
             --     cmd = { "clangd", "--header-insertion=never" }
             -- }
             -- lspconfig.pylsp.setup {}
+            
+
+            lsp.config('steel-language-server', {
+                cmd = { 'steel-language-server' },
+                filetypes = { "scheme" },
+                -- enable = true,
+            })
+            lsp.enable('steel-language-server')
             lsp.enable('pyright')
             lsp.enable('hls')
-            lsp.enable("clojure_lsp")
+            -- lsp.enable("clojure_lsp")
             -- lspconfig.rust_analyzer.setup({
             -- --    on_attach = on_attach,
             --     settings = {
