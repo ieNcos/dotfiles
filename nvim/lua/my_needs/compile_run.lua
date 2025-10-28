@@ -49,6 +49,12 @@ local compileRun = function()
 	elseif ft == 'clojure' then
 		split()
 		vim.cmd([[exec "term clojure -M %"]])
+	elseif ft == 'racket' then
+		split()
+		vim.cmd([[exec "term racket %"]])
+    elseif ft == 'scheme' then
+        split()
+        vim.cmd([[exec "term steel %"]])
 	elseif ft == 'markdown' then
 		vim.cmd([[exec "! md2pdf --css ~/Templates/md2pdf.css % %<.pdf"]])
 	elseif ft == 'typst' then

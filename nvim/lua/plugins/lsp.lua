@@ -48,6 +48,29 @@ vim.lsp.config("tinymist", {
         formatterMode = "typstyle"
     }
 })
+vim.lsp.enable('rust-analyzer')
+vim.lsp.config('rust-analyzer', {
+                cmd = { 'rust-analyzer' },
+                filetypes = { "rust" },
+                settings = {
+                    ["rust-analyzer"] = {
+                        imports = {
+                            granularity = {
+                                group = "module",
+                            },
+                            prefix = "self",
+                        },
+                        cargo = {
+                            buildScripts = {
+                                enable = true,
+                            },
+                        },
+                        procMacro = {
+                            enable = true
+                        },
+                    }
+                }
+})
 
             -- lspconfig.clangd.setup {
             --     cmd = { "clangd", "--header-insertion=never" }
@@ -60,31 +83,24 @@ vim.lsp.config("tinymist", {
                 filetypes = { "scheme" },
                 -- enable = true,
             })
+
             lsp.enable('steel-language-server')
             lsp.enable('pyright')
             lsp.enable('hls')
+
+            lsp.config('fennel-ls', {
+                cmd = { 'fennel-ls' },
+                filetypes = { "fennel" },
+            })
+            lsp.enable('fennel-ls')
+
+
+            lsp.config('racket_langserver', {
+                cmd = { 'racket', '-l', 'racket-langserver' },
+                filetypes = { 'racket' },
+            })
+            lsp.enable("racket_langserver")
             -- lsp.enable("clojure_lsp")
-            -- lspconfig.rust_analyzer.setup({
-            -- --    on_attach = on_attach,
-            --     settings = {
-            --         ["rust-analyzer"] = {
-            --             imports = {
-            --                 granularity = {
-            --                     group = "module",
-            --                 },
-            --                 prefix = "self",
-            --             },
-            --             cargo = {
-            --                 buildScripts = {
-            --                     enable = true,
-            --                 },
-            --             },
-            --             procMacro = {
-            --                 enable = true
-            --             },
-            --         }
-            --     }
-            -- })
 
     -- vim.api.nvim_create_autocmd('FileType', {
     --   -- This handler will fire when the buffer's 'filetype' is "python"

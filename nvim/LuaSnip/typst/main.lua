@@ -42,15 +42,18 @@ trigEngine = "plain"},fmta([[
 }), {}),
 
 
-s({trig = ",,",
-dscr = "math env",
-snippetType = "autosnippet",
+s({trig = "title",
+dscr = "align center",
+snippetType = "snippet",
 wordTrig = true,
 trigEngine = "plain"},fmta([[
-$<>$
+#align(center, text(28pt)[
+ *<>*
+]
 ]], {
-    i(0)
+    i(0),
 }), {}),
+
 
 
 }

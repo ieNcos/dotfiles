@@ -1,5 +1,8 @@
 { config, pkgs, lib, ... }:
 
+let
+  fennel-ls-with-docs = pkgs.callPackage ./fennel-ls/package.nix {  };
+in
 {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -60,10 +63,12 @@
     wpsoffice-cn
     ripgrep
     fd
-    wine
     typst
     tinymist
     websocat
+
+    # fennel-ls
+    fennel-ls-with-docs
 
     obs-studio
     ffmpeg
@@ -72,6 +77,9 @@
     # art用home-manager安装有问题，暂时用系统安装
     rawtherapee
 
+    wineWowPackages.waylandFull
+    winetricks
+    samba
   ];
 
   programs.neovim = {
