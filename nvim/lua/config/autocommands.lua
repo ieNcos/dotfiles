@@ -3,6 +3,9 @@ vim.api.nvim_create_autocmd( 'FileType', { pattern = {"clojure", "python", "rust
         vim.treesitter.start()
     end
 })
+vim.cmd([[
+au InsertLeave *.tex write
+]])
 
 vim.api.nvim_create_autocmd( 'FileType', { pattern = "lua",
     callback = function ()

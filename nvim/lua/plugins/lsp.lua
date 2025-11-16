@@ -88,11 +88,7 @@ vim.lsp.config('rust-analyzer', {
             lsp.enable('pyright')
             lsp.enable('hls')
 
-            lsp.config('fennel-ls', {
-                cmd = { 'fennel-ls' },
-                filetypes = { "fennel" },
-            })
-            lsp.enable('fennel-ls')
+            lsp.enable('fennel_ls')
 
 
             lsp.config('racket_langserver', {
@@ -101,6 +97,8 @@ vim.lsp.config('rust-analyzer', {
             })
             lsp.enable("racket_langserver")
             -- lsp.enable("clojure_lsp")
+            lsp.enable("lua_ls")
+            lsp.enable("zls")
 
     -- vim.api.nvim_create_autocmd('FileType', {
     --   -- This handler will fire when the buffer's 'filetype' is "python"

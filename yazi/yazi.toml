@@ -33,7 +33,7 @@ ueberzug_offset = [ 0, 0, 0, 0 ]
 [opener]
 edit = [
 	# { run = 'emacsclient "$@"', desc = "$EDITOR", block = true, for = "unix" },
-	{ run = '${EDITOR:-vi} "$@"', desc = "$EDITOR", block = true, for = "unix" },
+	{ run = 'nvim "$@"', desc = "$EDITOR", block = true, for = "unix" },
 	{ run = 'code %*',    orphan = true, desc = "code",           for = "windows" },
 	{ run = 'code -w %*', block = true,  desc = "code (block)",   for = "windows" },
 ]
@@ -64,6 +64,9 @@ play = [
 	{ run = '''mediainfo "$1"; echo "Press enter to exit"; read _''', block = true, desc = "Show media info", for = "unix" },
 ]
 
+################################################################################
+######################               看这里！！！           ####################
+################################################################################
 [open]
 rules = [
 	# Folder
@@ -86,6 +89,8 @@ rules = [
 	# Fallback
     { name = "*.tex", use = [ "edit", "reveal" ] },
     { name = "*.md", use = [ "edit", "reveal" ] },
+    { name = "*.txt", use = [ "edit", "reveal" ] },
+    { name = "*.fnl", use = [ "edit", "reveal" ] },
 	{ name = "*", use = [ "open", "reveal" ] },
 ]
 

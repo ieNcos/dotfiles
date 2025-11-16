@@ -26,6 +26,9 @@ return {
         		ls.change_choice(1)
         	end
         end, {silent = true})
+
+        require("luasnip.loaders.from_lua").load({paths = "~/.config/nvim/lua/LuaSnip/"})
+
 --       vim.cmd[[
 -- " Expand snippets in insert mode with Tab
 -- imap <silent><expr> <c-f> luasnip#expandable() ? '<Plug>luasnip-expand-snippet' : '<c-f>'

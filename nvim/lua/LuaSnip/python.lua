@@ -33,4 +33,16 @@ plt.rcParams["font.family"] = "Source Han Serif"
 ]], {
     
 }), {}),
+
+s({trig = "nl",
+dscr = "new block",
+snippetType = "snippet",
+wordTrig = false,
+trigEngine = "plain"},fmta([[
+# %%
+<>
+#%%
+]], {
+    i(0),
+}), {}),
 }

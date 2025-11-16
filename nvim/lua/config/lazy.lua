@@ -34,7 +34,3 @@ require('lazy').setup('plugins',{
         version = false,
     }
 })
-
-
-require("my_needs.compile_run")
-require("luasnip.loaders.from_lua").load({paths = "~/.config/nvim/LuaSnip/"})

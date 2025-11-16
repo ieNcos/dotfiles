@@ -1,8 +1,8 @@
 { config, pkgs, lib, ... }:
 
-let
-  fennel-ls-with-docs = pkgs.callPackage ./fennel-ls/package.nix {  };
-in
+# let
+#   fennel-ls-with-docs = pkgs.callPackage ./fennel-ls/package.nix {  };
+# in
 {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -30,6 +30,15 @@ in
   #   }))
   # ];
 
+  fonts = {
+    fontconfig = {
+      enable = true;
+      defaultFonts.serif = ["Source Han Serif SC"];
+      defaultFonts.sansSerif = ["Source Han Serif SC"];
+      defaultFonts.monospace = ["Source Han Serif SC"];
+    };
+  };
+
 
   home.packages = with pkgs; [
     # # Adds the 'hello' command to your environment. It prints a friendly
@@ -54,6 +63,7 @@ in
 
     tor
     tor-browser
+    aerc
 
     steel
     emacs-pgtk
@@ -65,10 +75,16 @@ in
     fd
     typst
     tinymist
+    lua-language-server
     websocat
 
-    # fennel-ls
-    fennel-ls-with-docs
+    gnupg
+    pass
+
+    racket
+    fennel
+    fennel-ls
+    # fennel-ls-with-docs
 
     obs-studio
     ffmpeg
@@ -97,6 +113,16 @@ in
       pyright
       tinymist
     ];
+  };
+
+    programs = {
+    direnv = {
+      enable = true;
+      enableBashIntegration = true; # see note on other shells below
+      nix-direnv.enable = true;
+    };
+
+    fish.enable = true; # see note on other shells below
   };
 
   # services.syncthing = {

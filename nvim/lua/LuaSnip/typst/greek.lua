@@ -37,11 +37,11 @@ local map = {
     psi = "ps",
     omega = "om",
 
-    ea = "epsilon.alt",
-    ba = "beta.alt",
-    ka = "kappa.alt",
-    pa = "phi.alt",
-    sa = "sigma.alt",
+    -- ea = "epsilon.alt",
+    -- ba = "beta.alt",
+    -- ka = "kappa.alt",
+    -- pa = "phi.alt",
+    -- sa = "sigma.alt",
 }
 
 local map2= {
@@ -73,7 +73,7 @@ local map2= {
     ["epsilon.alt"] = "ea",
     ["beta.alt"] = "ba",
     ["kappa.alt"] = "ka",
-    ["phi.alt"] = "pa",
+    ["phi.alt"] = "phia",
     ["sigma.alt"] = "sa",
 }
 

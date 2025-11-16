@@ -1,17 +1,5 @@
 return {
     {
-        "morhetz/gruvbox",
-        enabled = true,
-        config=function()
-            vim.cmd([[
-                "colorscheme gruvbox
-                "set background=dark
-                "set termguicolors
-            ]])
-        end
-    },
-
-    {
         'rebelot/kanagawa.nvim',
         enabled = true,
         lazy = false,
@@ -30,6 +18,9 @@ return {
           }
           vim.cmd.colorscheme 'kanagawa'
           vim.api.nvim_set_hl(0, 'TermCursor', { fg = '#A6E3A1', bg = '#A6E3A1' })
+          vim.opt.signcolumn = "auto"
+          vim.cmd("highlight CursorLine cterm=NONE ctermbg=NONE ctermfg=NONE guibg=NONE guifg=NONE")
+          vim.cmd("highlight Normal guibg=NONE ctermbg=NONE")
         end,
     }
 }

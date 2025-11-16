@@ -1,8 +1,6 @@
 --keymaps
 local wk = require 'which-key'
 
-        -- vim.keymap.set("n", "<leader>ll", "<plug>(vimtex-compile-toggle)", {remap = true})
-
 local in_mathzone = function()
     local result = vim.treesitter.get_captures_at_cursor(0)
     local flag = false
@@ -17,12 +15,12 @@ local in_mathzone = function()
     return false
 end
 
-vim.keymap.set("n",    "<C-e>",
-    function ()
-        vim.notify(vim.inspect(vim.treesitter.get_captures_at_cursor(0)))
-    end,
-    { noremap = true, silent = false }
-)
+-- vim.keymap.set("n",    "<C-e>",
+--     function ()
+--         vim.notify(vim.inspect(vim.treesitter.get_captures_at_cursor(0)))
+--     end,
+--     { noremap = true, silent = false }
+-- )
 
 vim.keymap.set("n", "<c-m>",
     function ()
@@ -47,11 +45,11 @@ local imap = function (key, effect)
 end
 
 local vmap = function (key, effect)
-    vim.keymap.set('v', key, effect, { silent = true, noremap = true })
+    vim.keymap.set('x', key, effect, { silent = true, noremap = true })
 end
 
 local nvmap = function (key, effect)
-    vim.keymap.set({'n', 'v'}, key, effect, { silent = true, noremap = true })
+    vim.keymap.set({'n', 'x'}, key, effect, { silent = true, noremap = true })
 end
 nmap("d",
     function ()
@@ -166,8 +164,6 @@ local mode_v = { "v" }
 local mode_i = { "i" }
 local mode_t = { "t" }
 local nmappings = {
-    { from = "W",          to = "<Cmd>wq!<CR>",           mode = mode_t },
-
     { from = "<esc>",      to = "<c-\\><c-n>",            mode = mode_t },
     { from = "<esc>",      to = ":" },
     -- { from = "<leader>bi", to = "<Cmd>%!xxd<CR>" },

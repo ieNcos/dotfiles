@@ -113,7 +113,17 @@ trigEngine = "plain"},fmta([[
 ^3
 ]], {
 
-}), {in_mathzone}),
+}), {condition = in_mathzone}),
+
+s({trig = "pa",
+dscr = "partial",
+snippetType = "autosnippet",
+wordTrig = true,
+trigEngine = "plain"},fmta([[
+partial <>
+]], {
+    i(0),
+}), {condition = in_mathzone}),
 
 -- s({trig = "--",
 -- dscr = "_",

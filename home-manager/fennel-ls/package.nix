@@ -6,6 +6,9 @@
   luaPackages,
   pandoc,
 }:
+let
+  nvimDocset = builtins.path {path = ../fennel-ls;};
+in
 stdenv.mkDerivation (finalAttrs: {
   pname = "fennel-ls";
   version = "0.2.1";
@@ -19,13 +22,14 @@ stdenv.mkDerivation (finalAttrs: {
   buildInputs = [
     lua
     luaPackages.fennel
+    nvimDocset
   ];
   nativeBuildInputs = [ pandoc ];
   makeFlags = [ "PREFIX=$(out)" ];
   installFlags = [ "PREFIX=$(out)" ];
   postInstall = ''
     mkdir -p $out/share/fennel-ls/docsets
-    cp /home/ieNcos/Documents/dotfiles/home-manager/fennel-ls/nvim.lua /share/fennel-ls/docsets/
+    cp ${nvimDocset}/nvim.lua $out/share/fennel-ls/docsets/
   '';
   meta = {
     description = "Language server for intelligent editing of the Fennel Programming Language";
