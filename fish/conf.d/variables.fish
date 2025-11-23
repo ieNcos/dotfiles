@@ -25,3 +25,4 @@ set -x XMODIFIERS @im=fcitx
 set -x SDL_IM_MODULE fcitx
 
 set -x EDITOR nvim
+set -x NIXOS_OZONE_WL 1

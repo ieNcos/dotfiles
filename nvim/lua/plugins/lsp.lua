@@ -28,28 +28,28 @@ return {
 
 
         },
-        config = function ()
+        config = function()
             local lsp = vim.lsp
             local lspconfig = require 'lspconfig'
             local util = require 'lspconfig.util'
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.textDocument.foldingRange = {
-  dynamicRegistration = true,
-  lineFoldingOnly = true,
-}
+            local capabilities = vim.lsp.protocol.make_client_capabilities()
+            capabilities.textDocument.foldingRange = {
+                dynamicRegistration = true,
+                lineFoldingOnly = true,
+            }
 
-capabilities.textDocument.semanticTokens.multilineTokenSupport = true
-capabilities.textDocument.completion.completionItem.snippetSupport = true
+            capabilities.textDocument.semanticTokens.multilineTokenSupport = true
+            capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-vim.lsp.enable('tinymist')
-vim.lsp.config("tinymist", {
-    capabilities = capabilities,
-    settings = {
-        formatterMode = "typstyle"
-    }
-})
-vim.lsp.enable('rust-analyzer')
-vim.lsp.config('rust-analyzer', {
+            vim.lsp.enable('tinymist')
+            vim.lsp.config("tinymist", {
+                capabilities = capabilities,
+                settings = {
+                    formatterMode = "typstyle"
+                }
+            })
+            vim.lsp.enable('rust-analyzer')
+            vim.lsp.config('rust-analyzer', {
                 cmd = { 'rust-analyzer' },
                 filetypes = { "rust" },
                 settings = {
@@ -70,13 +70,13 @@ vim.lsp.config('rust-analyzer', {
                         },
                     }
                 }
-})
+            })
 
             -- lspconfig.clangd.setup {
             --     cmd = { "clangd", "--header-insertion=never" }
             -- }
             -- lspconfig.pylsp.setup {}
-            
+
 
             lsp.config('steel-language-server', {
                 cmd = { 'steel-language-server' },
@@ -96,38 +96,91 @@ vim.lsp.config('rust-analyzer', {
                 filetypes = { 'racket' },
             })
             lsp.enable("racket_langserver")
-            -- lsp.enable("clojure_lsp")
+
+
+
+
+            lsp.config("lua_ls", {
+                on_init = function(client)
+                    if client.workspace_folders then
+                        local path = client.workspace_folders[1].name
+                        if
+                            path ~= vim.fn.stdpath('config')
+                            and (vim.uv.fs_stat(path .. '/.luarc.json') or vim.uv.fs_stat(path .. '/.luarc.jsonc'))
+                        then
+                            return
+                        end
+                    end
+
+                    client.config.settings.Lua = vim.tbl_deep_extend('force', client.config.settings.Lua, {
+                        runtime = {
+                            -- Tell the language server which version of Lua you're using (most
+                            -- likely LuaJIT in the case of Neovim)
+                            version = 'LuaJIT',
+                            -- Tell the language server how to find Lua modules same way as Neovim
+                            -- (see `:h lua-module-load`)
+                            path = {
+                                'lua/?.lua',
+                                'lua/?/init.lua',
+                            },
+                        },
+                        -- Make the server aware of Neovim runtime files
+                        workspace = {
+                            checkThirdParty = false,
+                            userThirdParty = { os.getenv("HOME") .. ".local/share/LuaAddons" },
+                            library = {
+                                vim.env.VIMRUNTIME,
+
+                                -- Depending on the usage, you might want to add additional paths
+                                -- here.
+                                '${3rd}/love2d/library'
+                                -- '${3rd}/busted/library'
+                            }
+                            -- Or pull in all of 'runtimepath'.
+                            -- NOTE: this is a lot slower and will cause issues when working on
+                            -- your own configuration.
+                            -- See https://github.com/neovim/nvim-lspconfig/issues/3189
+                            -- library = {
+                            --   vim.api.nvim_get_runtime_file('', true),
+                            -- }
+                        }
+                    })
+                end,
+                settings = {
+                    Lua = {}
+                }
+            })
             lsp.enable("lua_ls")
             lsp.enable("zls")
 
-    -- vim.api.nvim_create_autocmd('FileType', {
-    --   -- This handler will fire when the buffer's 'filetype' is "python"
-    --   pattern = 'scheme',
-    --   callback = function(ev)
-    --     vim.lsp.start({
-    --       name = 'steel-language-server',
-    --       -- cmd = {'steel-language-server', '--option', 'arg1', 'arg2'},
-    --       cmd = {'steel-language-server'},
-    --
-    --       -- Set the "root directory" to the parent directory of the file in the
-    --       -- current buffer (`ev.buf`) that contains either a "setup.py" or a
-    --       -- "pyproject.toml" file. Files that share a root directory will reuse
-    --       -- the connection to the same LSP server.
-    --       root_dir = vim.fs.root(ev.buf, {}),
-    --     })
-    --   end,
-    -- })
+            -- vim.api.nvim_create_autocmd('FileType', {
+            --   -- This handler will fire when the buffer's 'filetype' is "python"
+            --   pattern = 'scheme',
+            --   callback = function(ev)
+            --     vim.lsp.start({
+            --       name = 'steel-language-server',
+            --       -- cmd = {'steel-language-server', '--option', 'arg1', 'arg2'},
+            --       cmd = {'steel-language-server'},
+            --
+            --       -- Set the "root directory" to the parent directory of the file in the
+            --       -- current buffer (`ev.buf`) that contains either a "setup.py" or a
+            --       -- "pyproject.toml" file. Files that share a root directory will reuse
+            --       -- the connection to the same LSP server.
+            --       root_dir = vim.fs.root(ev.buf, {}),
+            --     })
+            --   end,
+            -- })
             vim.api.nvim_create_autocmd('LspAttach', {
                 group = vim.api.nvim_create_augroup('ieNcos-lsp-attach',
-                                                    {clear = true}),
-                callback = function (event)
+                    { clear = true }),
+                callback = function(event)
                     local function map(keys, func, desc)
                         vim.keymap.set('n', keys, func,
-                            { buffer = event.buf, desc = 'LSP: '..'desc' })
+                            { buffer = event.buf, desc = 'LSP: ' .. 'desc' })
                     end
                     local vmap = function(keys, func, desc)
                         vim.keymap.set('v', keys, func,
-                            { buffer = event.buf, desc = 'LSP: '..'desc' })
+                            { buffer = event.buf, desc = 'LSP: ' .. 'desc' })
                     end
                     local client = vim.lsp.get_client_by_id(event.data.client_id)
                     assert(client, 'Lsp client not found')
@@ -140,41 +193,39 @@ vim.lsp.config('rust-analyzer', {
                     map('gd', vim.lsp.buf.definition, '[g]o to [d]efinition')
                     vim.lsp.enable("tinymist")
                     vim.lsp.enable("pyright")
-        vim.keymap.set('n', '<space>f', function()
-            vim.lsp.buf.format { async = true }
-        end, opts)
-
+                    vim.keymap.set('n', '<space>f', function()
+                        vim.lsp.buf.format { async = true }
+                    end, opts)
                 end
--- vim.api.nvim_create_autocmd('LspAttach', {
---     group = vim.api.nvim_create_augroup('UserLspConfig', {}),
---     callback = function(ev)
---         -- Enable completion triggered by <c-x><c-o>
---         vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
---
---         -- Buffer local mappings.
---         -- See `:help vim.lsp.*` for documentation on any of the below functions
---         local opts = { buffer = ev.buf }
---         vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
---         vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
---         vim.keymap.set('n', 'H', vim.lsp.buf.hover, opts)
---         vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
---         vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
---         vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, opts)
---         vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, opts)
---         vim.keymap.set('n', '<space>wl', function()
---             print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
---         end, opts)
---         vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, opts)
---         vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, opts)
---         vim.keymap.set({ 'n', 'v' }, '<space>ca', vim.lsp.buf.code_action, opts)
---         vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
---         vim.keymap.set('n', '<space>f', function()
---             vim.lsp.buf.format { async = true }
---         end, opts)
---     end,
+                -- vim.api.nvim_create_autocmd('LspAttach', {
+                --     group = vim.api.nvim_create_augroup('UserLspConfig', {}),
+                --     callback = function(ev)
+                --         -- Enable completion triggered by <c-x><c-o>
+                --         vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
+                --
+                --         -- Buffer local mappings.
+                --         -- See `:help vim.lsp.*` for documentation on any of the below functions
+                --         local opts = { buffer = ev.buf }
+                --         vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
+                --         vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+                --         vim.keymap.set('n', 'H', vim.lsp.buf.hover, opts)
+                --         vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
+                --         vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
+                --         vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, opts)
+                --         vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, opts)
+                --         vim.keymap.set('n', '<space>wl', function()
+                --             print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+                --         end, opts)
+                --         vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, opts)
+                --         vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, opts)
+                --         vim.keymap.set({ 'n', 'v' }, '<space>ca', vim.lsp.buf.code_action, opts)
+                --         vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
+                --         vim.keymap.set('n', '<space>f', function()
+                --             vim.lsp.buf.format { async = true }
+                --         end, opts)
+                --     end,
 
             })
-
         end
     },
 }

@@ -67,6 +67,7 @@
 
     steel
     emacs-pgtk
+    vscode
     ollama
     zathura
     texlive.combined.scheme-full
@@ -98,31 +99,36 @@
     samba
   ];
 
-  programs.neovim = {
-    enable = true;
-    # not work
-    # defaultEditor = true;
 
-    extraPackages = with pkgs; [
-      gcc
-      clang-tools
-      rust-analyzer
-      haskell-language-server
-      nodejs
-      python3Packages.python-lsp-server
-      pyright
-      tinymist
-    ];
-  };
+  programs = {
 
-    programs = {
+    neovim = {
+      enable = true;
+      # not work
+      # defaultEditor = true;
+      extraPackages = with pkgs; [
+        gcc
+        clang-tools
+        rust-analyzer
+        haskell-language-server
+        nodejs
+        python3Packages.python-lsp-server
+        pyright
+        tinymist
+      ];
+    };
     direnv = {
       enable = true;
       enableBashIntegration = true; # see note on other shells below
       nix-direnv.enable = true;
     };
+    vscode = {
+        enable = true;
+        package = pkgs.vscode.fhs;
+        # package = pkgs.vscode.fhsWithPackages (ps: with ps; [ rustup zlib openssl.dev pkg-config ]);
+    };
 
-    fish.enable = true; # see note on other shells below
+    # bash.enable = true; # see note on other shells below
   };
 
   # services.syncthing = {

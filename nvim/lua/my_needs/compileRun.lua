@@ -5,7 +5,7 @@ local function split()
   return vim.cmd("res -5")
 end
 local split_command_dict = {python = "term python %", c = "term gcc % -o %< && ./%<", cpp = "term g++ % -o %< && ./%<", rust = "term cargo run", zig = "term zig build run", scheme = "term steel %", racket = "term racket %", lua = "term lua %", fennel = "term fennel %"}
-local test_dict = {zig = "term zig build test", lua = "term love ."}
+local test_dict = {zig = "term zig build test", lua = "term love .", rust = "term cargo test"}
 local command_dict = {typst = "exec '!typst compile %'"}
 local function compileRun()
   vim.cmd("w")

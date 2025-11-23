@@ -18,6 +18,7 @@
 (local test_dict {
   :zig    "term zig build test"
   :lua    "term love ."
+  :rust   "term cargo test"
 })
 (local command_dict {
   :typst "exec '!typst compile %'"

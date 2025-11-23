@@ -22,18 +22,18 @@ end
 --     { noremap = true, silent = false }
 -- )
 
-vim.keymap.set("n", "<c-m>",
-    function ()
-        local current_row = vim.api.nvim_win_get_cursor(0)[1]
-        local current_buffer = vim.api.nvim_get_current_buf()
-        local current_line_content = vim.api.nvim_buf_get_lines(
-            current_buffer,
-            current_row-1,
-            current_row,
-            false)
-        vim.notify(current_line_content[1])
-    end, { noremap = true, silent = false }
-)
+-- vim.keymap.set("n", "<c-m>",
+--     function ()
+--         local current_row = vim.api.nvim_win_get_cursor(0)[1]
+--         local current_buffer = vim.api.nvim_get_current_buf()
+--         local current_line_content = vim.api.nvim_buf_get_lines(
+--             current_buffer,
+--             current_row-1,
+--             current_row,
+--             false)
+--         vim.notify(current_line_content[1])
+--     end, { noremap = true, silent = false }
+-- )
 
 
 local nmap = function (key, effect)
