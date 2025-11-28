@@ -1,8 +1,5 @@
 { config, pkgs, lib, ... }:
 
-# let
-#   fennel-ls-with-docs = pkgs.callPackage ./fennel-ls/package.nix {  };
-# in
 let
   filesRoot = config.home.homeDirectory + "/.backpack";
   sc-im-with-xlsx = pkgs.sc-im.override {
