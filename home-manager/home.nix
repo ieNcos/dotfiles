@@ -3,6 +3,9 @@
 # let
 #   fennel-ls-with-docs = pkgs.callPackage ./fennel-ls/package.nix {  };
 # in
+let
+  filesRoot = config.home.homeDirectory + "/.backpack";
+in
 {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -61,13 +64,14 @@
     pdftk
     exiftool
 
+    sc-im
+
     tor
     tor-browser
     aerc
 
     steel
     emacs-pgtk
-    vscode
     ollama
     zathura
     texlive.combined.scheme-full
@@ -83,7 +87,7 @@
     pass
 
     racket
-    fennel
+    luaPackages.fennel
     fennel-ls
     # fennel-ls-with-docs
 
@@ -97,6 +101,10 @@
     wineWowPackages.waylandFull
     winetricks
     samba
+
+
+    glslviewer
+    glsl_analyzer
   ];
 
 
@@ -124,8 +132,11 @@
     };
     vscode = {
         enable = true;
-        package = pkgs.vscode.fhs;
+        # package = pkgs.vscode.fhs;
         # package = pkgs.vscode.fhsWithPackages (ps: with ps; [ rustup zlib openssl.dev pkg-config ]);
+        profiles.default.extensions = with pkgs.vscode-extensions; [
+            ms-toolsai.jupyter
+        ];
     };
 
     # bash.enable = true; # see note on other shells below
@@ -140,37 +151,38 @@
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
-  home.file = {
-    # # Building this configuration will create a copy of 'dotfiles/screenrc' in
-    # # the Nix store. Activating the configuration will then make '~/.screenrc' a
-    # # symlink to the Nix store copy.
-    # ".screenrc".source = dotfiles/screenrc;
+    home.file = {
+      # # Building this configuration will create a copy of 'dotfiles/screenrc' in
+      # # the Nix store. Activating the configuration will then make '~/.screenrc' a
+      # # symlink to the Nix store copy.
+      # ".screenrc".source = dotfiles/screenrc;
 
-    # # You can also set the file content immediately.
-    # ".gradle/gradle.properties".text = ''
-    #   org.gradle.console=verbose
-    #   org.gradle.daemon.idletimeout=3600000
-    # '';
-    "Documents/dotfiles".source = config.lib.file.mkOutOfStoreSymlink /home/ieNcos/.backpack/dotfiles;
-    "Documents/books".source    = config.lib.file.mkOutOfStoreSymlink /home/ieNcos/.backpack/books;
-    "Desktop/coding".source    = config.lib.file.mkOutOfStoreSymlink /home/ieNcos/.backpack/coding;
-    "Templates".source    = config.lib.file.mkOutOfStoreSymlink /home/ieNcos/.backpack/Templates;
-    "00Core".source    = config.lib.file.mkOutOfStoreSymlink /home/ieNcos/.backpack/00Core;
+      # # You can also set the file content immediately.
+      # ".gradle/gradle.properties".text = ''
+      #   org.gradle.console=verbose
+      #   org.gradle.daemon.idletimeout=3600000
+      # '';
+      "Documents/dotfiles".source = config.lib.file.mkOutOfStoreSymlink filesRoot + "/dotfiles";
+      "Documents/books".source    = config.lib.file.mkOutOfStoreSymlink filesRoot + "/books";
+      "Desktop/coding".source     = config.lib.file.mkOutOfStoreSymlink filesRoot + "/coding";
+      "Templates".source          = config.lib.file.mkOutOfStoreSymlink filesRoot + "/Templates";
+      "00Core".source             = config.lib.file.mkOutOfStoreSymlink filesRoot + "/00Core";
 
 
-    ".doom.d".source    = config.lib.file.mkOutOfStoreSymlink /home/ieNcos/.backpack/dotfiles/doomEmacs;
-    ".config/fcitx5".source     = config.lib.file.mkOutOfStoreSymlink /home/ieNcos/.backpack/dotfiles/fcitx5;
-    ".config/fish".source       = config.lib.file.mkOutOfStoreSymlink /home/ieNcos/.backpack/dotfiles/fish;
-    ".config/hypr".source       = config.lib.file.mkOutOfStoreSymlink /home/ieNcos/.backpack/dotfiles/hypr;
-    ".config/kitty".source      = config.lib.file.mkOutOfStoreSymlink /home/ieNcos/.backpack/dotfiles/kitty;
-    ".config/nixpkgs".source    = config.lib.file.mkOutOfStoreSymlink /home/ieNcos/.backpack/dotfiles/nixpkgs;
-    ".config/nvim".source       = config.lib.file.mkOutOfStoreSymlink /home/ieNcos/.backpack/dotfiles/nvim;
-    ".config/tmux".source       = config.lib.file.mkOutOfStoreSymlink /home/ieNcos/.backpack/dotfiles/tmux;
-    ".config/waybar".source     = config.lib.file.mkOutOfStoreSymlink /home/ieNcos/.backpack/dotfiles/waybar;
-    ".config/yazi".source       = config.lib.file.mkOutOfStoreSymlink /home/ieNcos/.backpack/dotfiles/yazi;
-    ".config/zathura".source    = config.lib.file.mkOutOfStoreSymlink /home/ieNcos/.backpack/dotfiles/zathura;
+      ".doom.d".source            = config.lib.file.mkOutOfStoreSymlink filesRoot + "/dotfiles/doomEmacs";
+      ".config/fcitx5".source     = config.lib.file.mkOutOfStoreSymlink filesRoot + "/dotfiles/fcitx5";
+      ".config/fish".source       = config.lib.file.mkOutOfStoreSymlink filesRoot + "/dotfiles/fish";
+      ".config/hypr".source       = config.lib.file.mkOutOfStoreSymlink filesRoot + "/dotfiles/hypr";
+      ".config/kitty".source      = config.lib.file.mkOutOfStoreSymlink filesRoot + "/dotfiles/kitty";
+      ".config/nixpkgs".source    = config.lib.file.mkOutOfStoreSymlink filesRoot + "/dotfiles/nixpkgs";
+      ".config/nvim".source       = config.lib.file.mkOutOfStoreSymlink filesRoot + "/dotfiles/nvim";
+      ".config/sc-im".source      = config.lib.file.mkOutOfStoreSymlink filesRoot + "/dotfiles/scim";
+      ".config/tmux".source       = config.lib.file.mkOutOfStoreSymlink filesRoot + "/dotfiles/tmux";
+      ".config/waybar".source     = config.lib.file.mkOutOfStoreSymlink filesRoot + "/dotfiles/waybar";
+      ".config/yazi".source       = config.lib.file.mkOutOfStoreSymlink filesRoot + "/dotfiles/yazi";
+      ".config/zathura".source    = config.lib.file.mkOutOfStoreSymlink filesRoot + "/dotfiles/zathura";
 
-  };
+    };
 
 
   # Home Manager can also manage your environment variables through

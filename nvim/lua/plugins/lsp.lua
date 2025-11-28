@@ -83,6 +83,7 @@ return {
                 filetypes = { "scheme" },
                 -- enable = true,
             })
+            lsp.enable('glsl_analyzer')
 
             lsp.enable('steel-language-server')
             lsp.enable('pyright')
