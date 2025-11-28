@@ -5,6 +5,9 @@
 # in
 let
   filesRoot = config.home.homeDirectory + "/.backpack";
+  sc-im-with-xlsx = pkgs.sc-im.override {
+      xlsSupport = true;
+  };
 in
 {
   # Home Manager needs a bit of information about you and the paths it should
@@ -64,7 +67,10 @@ in
     pdftk
     exiftool
 
-    sc-im
+    # sc-im.override {
+    #     xlsSupport = true;
+    # }
+    sc-im-with-xlsx
 
     tor
     tor-browser
@@ -109,6 +115,7 @@ in
 
 
   programs = {
+
 
     neovim = {
       enable = true;
