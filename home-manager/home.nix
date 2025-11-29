@@ -43,6 +43,7 @@ in
   };
 
 
+
   home.packages = with pkgs; [
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
@@ -60,6 +61,14 @@ in
     # (pkgs.writeShellScriptBin "my-hello" ''
     #   echo "Hello, ${config.home.username}!"
     # '')
+
+    (writeShellScriptBin "uv" ''
+      export LD_LIBRARY_PATH=$NIX_LD_LIBRARY_PATH
+      exec ${uv}/bin/uv "$@"
+    '')
+
+    # micromamba
+
     pdfpc
     pdftk
     exiftool
@@ -112,6 +121,14 @@ in
 
 
   programs = {
+    # nix-ld = {
+    #     enable = true;
+    #     enableUserHelper = true;
+    #     extraLibraries = with pkgs; [
+    #       glibc
+    #       stdenv.cc.cc.lib
+    #     ];
+    # };
 
 
     neovim = {
