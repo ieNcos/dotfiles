@@ -2,4 +2,4 @@ nnoremap "j" "h"
 nnoremap "k" "j"
 nnoremap "l" "k"
 nnoremap ";" "l"
-lua dofile("./fcitx.lua")
+# lua dofile("./fcitx.lua")

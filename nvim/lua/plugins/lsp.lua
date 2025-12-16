@@ -90,6 +90,7 @@ return {
             lsp.enable('hls')
 
             lsp.enable('fennel_ls')
+            lsp.enable('texlab')
 
 
             lsp.config('racket_langserver', {

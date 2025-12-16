@@ -15,6 +15,6 @@ return {
         }
 
         vim.g.vimtex_mappings_enabled = false
-        --vim.g.vimtex_complete_enabled = 1
+        -- vim.g.vimtex_complete_enabled = 1
     end,
 }

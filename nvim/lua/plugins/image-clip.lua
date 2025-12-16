@@ -7,10 +7,21 @@ return {
               template = [[|![]($FILE_PATH)|
 |:--:|
 |$CURSOR|]]
-          }
-      }
-    -- add options here
-    -- or leave it empty to use the default settings
+          },
+          tex = {
+              relative_template_path = false, ---@type boolean | fun(): boolean
+              template = [[
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{$FILE_PATH}
+  \caption{$CURSOR}
+  \label{fig:$LABEL}
+\end{figure}
+]], ---@type string | fun(context: table): string
+
+              formats = { "jpeg", "jpg", "png", "pdf" }, ---@type table
+          },
+      },
   },
   keys = {
     -- suggested keymap

@@ -1,3 +1,4 @@
+---@diagnostic disable undefined-global
 local in_mathzone = function()
   -- The `in_mathzone` function requires the VimTeX plugin
   return vim.fn['vimtex#syntax#in_mathzone']() == 1

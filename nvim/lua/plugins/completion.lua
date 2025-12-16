@@ -9,13 +9,12 @@ local M = {
             npairs.setup {
                 enable_check_bracket_line = false,
                 enable_moveright = false,
+                -- ignored_next_char = [=[[%w%%%'%[%"%.%`%$]]=],
+                ignored_next_char = [=[[%w%%%'%[%"%.%`]]=],
             }
             npairs.remove_rule '`'
 
 -- {{{ (|) + <space> --> ( | )
---#########################
---## (|)  + space --> ( | )
---#########################
 local brackets = { { '(', ')' }, { '[', ']' }, { '{', '}' }, { '$', '$' } }
 npairs.add_rules {
   -- Rule for a pair with left-side ' ' and right side ' '

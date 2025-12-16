@@ -1,0 +1,1 @@
+pdftk QSP-Shindou-v1.pdf update_info qsp.txt output QSP-Shindou-v.pdf; mv QSP-Shindou-v.pdf QSP-Shindou-v1.pdf

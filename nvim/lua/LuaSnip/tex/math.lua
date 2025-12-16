@@ -1,4 +1,6 @@
--- generating function
+---@diagnostic disable undifined-global
+
+-- for matrix
 local mat = function(args, snip)
     local rows = tonumber(snip.captures[2])
     local cols = tonumber(snip.captures[3])
@@ -39,7 +41,10 @@ local get_visual = function(args, parent)
 end
 return {
 
-s({trig = ",,", wordTrig = true, trigEngine = "pattern", snippetType = "autosnippet"},
+s({trig = ",,|，，",
+wordTrig = false,
+trigEngine = "ecma",
+snippetType = "autosnippet"},
   fmta(
     "$<>$",
     {
@@ -47,6 +52,7 @@ s({trig = ",,", wordTrig = true, trigEngine = "pattern", snippetType = "autosnip
     }
   )
 ),
+
 s({trig = "eq", dscr = "Expands 'eq' into an equation environment"},
   fmta(
      [[
@@ -367,21 +373,21 @@ s({trig = "zz", dscr = "\\hat z", snippetType = "autosnippet", wordTrig = false,
     {condition = in_mathzone}
 ),
 
-s({trig = "rr", dscr = "\\hat r", snippetType = "autosnippet", wordTrig = false, regTrig = true},
-    fmta(
-        "\\boldsymbol{\\hat r}",
-        {}
-    ),
-    {condition = in_mathzone}
-),
+-- s({trig = "rr", dscr = "\\hat r", snippetType = "autosnippet", wordTrig = false, regTrig = true},
+--     fmta(
+--         "\\boldsymbol{\\hat r}",
+--         {}
+--     ),
+--     {condition = in_mathzone}
+-- ),
 
-s({trig = "tt", dscr = "\\hat \\theta", snippetType = "autosnippet", wordTrig = false, regTrig = true},
-    fmta(
-        "\\boldsymbol{\\hat \\theta}",
-        {}
-    ),
-    {condition = in_mathzone}
-),
+-- s({trig = "tt", dscr = "\\hat \\theta", snippetType = "autosnippet", wordTrig = false, regTrig = true},
+--     fmta(
+--         "\\boldsymbol{\\hat \\theta}",
+--         {}
+--     ),
+--     {condition = in_mathzone}
+-- ),
 
 
 s({trig = "pp", dscr = "\\hat \\phi", snippetType = "autosnippet", wordTrig = false, regTrig = true},

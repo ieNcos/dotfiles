@@ -68,7 +68,13 @@ in
     '')
 
     # micromamba
+    conda
+    neomutt
+    himalaya
+    isync
+    msmtp
 
+    kdePackages.okular
     pdfpc
     pdftk
     exiftool
@@ -77,10 +83,13 @@ in
     #     xlsSupport = true;
     # }
     sc-im-with-xlsx
-
     tor
     tor-browser
     aerc
+
+    texpresso
+    timer
+    sdcv
 
     steel
     emacs-pgtk
@@ -142,8 +151,11 @@ in
         haskell-language-server
         nodejs
         python3Packages.python-lsp-server
+        luajitPackages.luarocks-nix
+        # luajitPackages.jsregexp
         pyright
         tinymist
+        texlab
       ];
     };
     direnv = {

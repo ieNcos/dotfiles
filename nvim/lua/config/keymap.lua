@@ -1,19 +1,19 @@
---keymaps
-local wk = require 'which-key'
+-- keymaps
+-- local wk = require 'which-key'
 
-local in_mathzone = function()
-    local result = vim.treesitter.get_captures_at_cursor(0)
-    local flag = false
-    for _, v in ipairs(result) do
-        if v == "markup.math" then
-            --return true
-            vim.notify("yes")
-            return true
-        end
-    end
-    vim.notify("no")
-    return false
-end
+-- local in_mathzone = function()
+--     local result = vim.treesitter.get_captures_at_cursor(0)
+--     local flag = false
+--     for _, v in ipairs(result) do
+--         if v == "markup.math" then
+--             --return true
+--             vim.notify("yes")
+--             return true
+--         end
+--     end
+--     vim.notify("no")
+--     return false
+-- end
 
 -- vim.keymap.set("n",    "<C-e>",
 --     function ()
@@ -83,6 +83,7 @@ nmap("<c-,>",
 -- nmap("<S-CR>", "o<esc>")
 imap("<C-;>", "<esc>")
 imap("。", ". ")
+nmap("<C-v>", "<C-v>")
 
 
 nmap("<C-f>", "<C-f>")
@@ -237,14 +238,14 @@ for _, mapping in ipairs(nmappings) do
     vim.keymap.set(mapping.mode or "n", mapping.from, mapping.to, { noremap = true })
 end
 
-wk.add({
-    {
-        { "<leader>r", group = "rrrr" },
-        { "<leader>rf", "<cmd>split<cr>", desc = "split" },
-        { "<leader>q", group = "[q]uarto" },
-        { "<leader>qp", "<Cmd>lua require'quarto'.quartoPreview()<CR>", desc = "[q]arto[p]review" },
-    }
-})
+-- wk.add({
+--     {
+--         { "<leader>r", group = "rrrr" },
+--         { "<leader>rf", "<cmd>split<cr>", desc = "split" },
+--         { "<leader>q", group = "[q]uarto" },
+--         { "<leader>qp", "<Cmd>lua require'quarto'.quartoPreview()<CR>", desc = "[q]arto[p]review" },
+--     }
+-- })
 
 vim.cmd([[
 cnoremap <expr> %% getcmdtype( ) == ':' ? expand('%:h').'/' : '%%'

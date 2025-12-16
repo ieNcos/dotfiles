@@ -21,13 +21,13 @@
 (set vim.opt.breakindent true)
 ;; }}}
 
-;; {{{ statusline and cmdline
+; {{{ statusline and cmdline
 (vim.cmd "
 let g:currentmode={
       \\  'n'  : '%#String# NORMAL ',
       \\  'v'  : '%#Search# VISUAL ',
       \\  's'  : '%#ModeMsg# VISUAL ',
-      \\  '\\<C-V>' : '%#Title# V·Block ',
+      \\  '' : '%#Title# V·Block ',
       \\  'V'  : '%#IncSearch# V·Line ',
       \\  'Rv' : '%#String# V·Replace ',
       \\  'i'  : '%#ModeMsg# INSERT ',
@@ -42,4 +42,3 @@ let g:currentmode={
 ;; }}}
 
 (vim.cmd "set fileencodings=utf8,ucs-bom,gbk,cp936,gb2312,gb18030")
-

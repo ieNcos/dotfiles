@@ -1,9 +1,8 @@
 return {
 	"L3MON4D3/LuaSnip",
-	-- follow latest release.
-	version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
-	-- install jsregexp (optional!).
-	build = "make install_jsregexp",
+	version = "v2.*",
+    -- maybe not work 建议到.local/share/nvim/lazy/Luasnip/ 里面手动运行 make ...
+	-- build = "make install_jsregexp",
     enabled = true,
   config = function()
 		require('luasnip').config.setup({

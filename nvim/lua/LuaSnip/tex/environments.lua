@@ -32,11 +32,11 @@ dscr = "article",
 snippetType = "snippet",
 wordTrig = true,
 trigEngine = "plain"},fmta([[
-%! TEX program = xelatex
+%! TEX program = lualatex
 \documentclass{article}    
 \usepackage{amsmath}
 \usepackage{ctex}
-\usepackage[margin=0.3in]{geometry}
+\usepackage[margin=1in]{geometry}
 \usepackage{multirow}
 \usepackage{graphicx}
 \usepackage{float}
@@ -59,16 +59,6 @@ trigEngine = "plain"},fmta([[
     i(3),
     i(0),
 }), {}),
-
-s({trig = "trig",
-dscr = "description",
-snippetType = "autosnippet",
-wordTrig = false,
-trigEngine = "plain"},fmta([[
-main
-]], {
-    nodes
-}), {condition}),
 
 s({trig = "figure",
 dscr = "figure-env",
