@@ -1,4 +1,4 @@
-vim.api.nvim_create_autocmd( 'FileType', { pattern = {"clojure", "python", "rust", "c", "lua", "cpp", "fish", "markdown", "haskell", "latex"},
+vim.api.nvim_create_autocmd( 'FileType', { pattern = {"clojure", "python", "rust", "c", "lua", "cpp", "fish", "markdown", "haskell", "latex", "c3", "go", "fennel"},
     callback = function ()
         vim.treesitter.start()
     end

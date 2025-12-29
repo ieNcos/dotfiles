@@ -8,3 +8,5 @@ if test -z "$DISPLAY"
 end
 
 direnv hook fish | source
+zoxide init fish | source
+

@@ -29,6 +29,11 @@ local function compileTest()
     return nil
   end
 end
+local function make()
+  vim.cmd("w")
+  return vim.cmd("make")
+end
 vim.keymap.set("n", "<F5>", compileRun, {silent = true})
 vim.keymap.set("n", "<F6>", compileTest, {silent = true})
-return {}
+vim.keymap.set("n", "<F4>", make, {silent = false})
+return ""

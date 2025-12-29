@@ -72,10 +72,12 @@ return {
                 }
             })
 
-            -- lspconfig.clangd.setup {
-            --     cmd = { "clangd", "--header-insertion=never" }
-            -- }
-            -- lspconfig.pylsp.setup {}
+            lsp.config('clangd', {
+                -- cmd = { "clangd", "--query-driver=/home/ieNcos/.nix-profile/bin/clang++"},
+                cmd = { "clangd", "--header-insertion=never"},
+            })
+            lsp.enable("clangd")
+            -- lsp.enable('ccls')
 
 
             lsp.config('steel-language-server', {
@@ -91,6 +93,12 @@ return {
 
             lsp.enable('fennel_ls')
             lsp.enable('texlab')
+            lsp.config('c3-lsp', {
+                cmd = { "c3-lsp" },
+                -- filetypes =  {'c3', 'c3i',},
+                -- root_markers = { "project.json", "manifest.json", ".git" },
+            })
+            lsp.enable('c3-lsp')
 
 
             lsp.config('racket_langserver', {

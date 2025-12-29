@@ -1,10 +1,12 @@
 (set vim.opt.number true)
 (set vim.opt.relativenumber true)
+(set vim.opt.cursorline true)
 (set vim.opt.mouse "")
 (set vim.opt.history 10000)
 (set vim.g.python_host_prog "ipython")
 (set vim.opt.foldmethod "marker")
 (set vim.opt.conceallevel 0)
+(vim.cmd "set fileencodings=utf8,ucs-bom,gbk,cp936,gb2312,gb18030")
 
 ;; {{{ tab
 (local tabsize 4)
@@ -41,4 +43,15 @@ let g:currentmode={
 (set vim.o.cmdheight 1)
 ;; }}}
 
-(vim.cmd "set fileencodings=utf8,ucs-bom,gbk,cp936,gb2312,gb18030")
+;; {{{ highlight comment
+; (vim.api.nvim_set_hl 0 "Comment" { ; @comment for treesitter
+;                      :fg "#777777"
+;                      :bg "#000000"
+; ;                      :italic false
+; })
+; (vim.api.nvim_set_hl 0 "@comment" { ; @comment for treesitter
+;                      :fg "#CCCCCC"
+;                      :bg "#007799"
+; ;                      :italic false
+; })
+;; }}}

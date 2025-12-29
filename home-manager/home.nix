@@ -67,12 +67,16 @@ in
       exec ${uv}/bin/uv "$@"
     '')
 
+	zoxide
+	tmux
+
     # micromamba
     conda
-    neomutt
-    himalaya
-    isync
-    msmtp
+
+    clang
+    clang-tools
+
+    tree-sitter
 
     kdePackages.okular
     pdfpc
@@ -85,11 +89,9 @@ in
     sc-im-with-xlsx
     tor
     tor-browser
-    aerc
 
     texpresso
     timer
-    sdcv
 
     steel
     emacs-pgtk
@@ -146,7 +148,7 @@ in
       # defaultEditor = true;
       extraPackages = with pkgs; [
         gcc
-        clang-tools
+        # clang-tools
         rust-analyzer
         haskell-language-server
         nodejs
@@ -169,6 +171,7 @@ in
         # package = pkgs.vscode.fhsWithPackages (ps: with ps; [ rustup zlib openssl.dev pkg-config ]);
         profiles.default.extensions = with pkgs.vscode-extensions; [
             ms-toolsai.jupyter
+			asvetliakov.vscode-neovim
         ];
     };
 
@@ -202,7 +205,7 @@ in
       "00Core".source             = config.lib.file.mkOutOfStoreSymlink filesRoot + "/00Core";
 
 
-      ".doom.d".source            = config.lib.file.mkOutOfStoreSymlink filesRoot + "/dotfiles/doomEmacs";
+      # ".doom.d".source            = config.lib.file.mkOutOfStoreSymlink filesRoot + "/dotfiles/doomEmacs";
       ".config/fcitx5".source     = config.lib.file.mkOutOfStoreSymlink filesRoot + "/dotfiles/fcitx5";
       ".config/fish".source       = config.lib.file.mkOutOfStoreSymlink filesRoot + "/dotfiles/fish";
       ".config/hypr".source       = config.lib.file.mkOutOfStoreSymlink filesRoot + "/dotfiles/hypr";

@@ -98,5 +98,36 @@ trigEngine = "plain"},fmta([[
     i(0)
 }), {}),
 
+s({trig = "item",
+dscr = "item",
+snippetType = "snippet",
+wordTrig = true,
+trigEngine = "plain"},fmta([[
+\item<>
+]], {
+    i(0),
+}), {}),
+
+s({trig = "para",
+dscr = "paragraph",
+snippetType = "snippet",
+wordTrig = true,
+trigEngine = "plain"},fmta([[
+\<>paragraph{<>}
+]], {
+    i(1),
+    i(0),
+}), {}),
+
+s({trig = "tt",
+dscr = "paragraph",
+snippetType = "snippet",
+wordTrig = true,
+trigEngine = "plain"},fmta([[
+\textbf{<>}
+]], {
+    i(0),
+}), {}),
+
 
 }

@@ -1,11 +1,13 @@
 -- [nfnl] fnl/config/global.fnl
 vim.opt.number = true
 vim.opt.relativenumber = true
+vim.opt.cursorline = true
 vim.opt.mouse = ""
 vim.opt.history = 10000
 vim.g.python_host_prog = "ipython"
 vim.opt.foldmethod = "marker"
 vim.opt.conceallevel = 0
+vim.cmd("set fileencodings=utf8,ucs-bom,gbk,cp936,gb2312,gb18030")
 local tabsize = 4
 vim.opt.expandtab = true
 vim.opt.smarttab = true
@@ -22,4 +24,4 @@ math.randomseed(os.time())
 local i = math.random(#animals)
 vim.o.statusline = ("%{%g:currentmode[mode()]%} %{%reg_recording()%} %* %t | %y | %* %= c:%c l:%l/%L %p%% %#NonText# " .. animals[i] .. " %*")
 vim.o.cmdheight = 1
-return vim.cmd("set fileencodings=utf8,ucs-bom,gbk,cp936,gb2312,gb18030")
+return nil
